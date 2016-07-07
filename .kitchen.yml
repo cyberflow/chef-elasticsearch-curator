@@ -1,0 +1,28 @@
+---
+driver:
+  name: vagrant
+
+provisioner:
+  name: chef_zero
+
+platforms:
+<% %w(12.7 12.6 12.5 12.4 12.3 12.2 12.1).each do |chef_version| %>
+  - name: ubuntu-14.04-chef<%= chef_version %>
+    driver_config:
+      image_ref: Obsolete Ubuntu 14.04 Trusty (x86_64)
+      flavor_ref: SSD.30
+      require_chef_omnibus: <%= chef_version %>
+<% end %>
+
+suites:
+  - name: default
+    run_list:
+      - recipe[elasticsearch-curator::default]
+    attributes:
+  - name: pip_install
+    run_list:
+      - recipe[apt]
+      - recipe[elasticsearch-curator::default]
+    attributes:
+      elasticsearch-curator:
+        install_method: 'pip'
