@@ -1,4 +1,4 @@
-# elasticsearch-curator
+# elasticsearch-curator [![Cookbook Version](http://img.shields.io/cookbook/v/elasticsearch-curator.svg)](https://community.opscode.com/cookbooks/ftp-cpudfs) [![Build Status](https://travis-ci.org/cyberflow/chef-elasticsearch-curator.svg?branch=master)](https://travis-ci.org/cyberflow/chef-ftp-cloudfs)
 
 Chef cookbook to install and configure [elasticsearch-curator](https://www.elastic.co/guide/en/elasticsearch/client/curator/current/index.html) from version 4.
 
@@ -63,4 +63,5 @@ end
 To run tests, install all dependencies with [bundler](http://bundler.io/):
 
     bundle install
-
+    bundle exec rubocop .
+    bundle exec foodcritic .

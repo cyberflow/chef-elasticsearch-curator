@@ -7,8 +7,6 @@ group :integration do
 end
 
 group :test do
-  # gem 'minitest'
   gem 'rubocop'
-  # gem 'rake'
   gem 'foodcritic'
 end

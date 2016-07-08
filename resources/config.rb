@@ -36,7 +36,7 @@ action :configure do
   require 'yaml'
 
   file "#{path}/curator.yml" do
-    content YAML::dump(config.to_hash)
+    content YAML.dump(config.to_hash)
     user user
     mode '0644'
   end

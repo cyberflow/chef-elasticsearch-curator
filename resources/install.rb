@@ -17,12 +17,13 @@ action :install do
   if node.platform_family? 'debian'
     apt_repository 'elasticsearch-curator' do
       uri new_resource.repository_url
-      components ['stable', 'main']
+      distribution ''
+      components %w(stable main)
       key new_resource.repository_key
       only_if { new_resource.install_method == 'package' }
     end
   else
-    Chef::Log.warn "I do not support your platform: #{node.platform_family}"
+    Chef::Log.warn "I do not support your platform: #{node['platform_family']}"
   end
 
   if new_resource.install_method == 'package'
