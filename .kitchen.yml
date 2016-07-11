@@ -18,11 +18,13 @@ suites:
   - name: default
     run_list:
       - recipe[elasticsearch-curator::default]
+      - recipe[elasticsearch-curator-test::default]
     attributes:
   - name: pip_install
     run_list:
       - recipe[apt]
       - recipe[elasticsearch-curator::default]
+      - recipe[elasticsearch-curator-test::default]
     attributes:
       elasticsearch-curator:
         install_method: 'pip'
