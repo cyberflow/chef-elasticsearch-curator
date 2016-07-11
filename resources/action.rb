@@ -25,16 +25,16 @@ action :create do
 
   file "#{path}/#{name}.yml" do
     content YAML.dump(config.to_hash)
-    user user
+    user new_resource.username
     mode '0644'
   end
 
   curator_args = "--config #{node['elasticsearch-curator']['config_file_path']}/curator.yml #{path}/#{name}.yml"
   cr = cron "curator-#{name}" do
     command "/usr/local/bin/curator #{curator_args}"
-    user    username
-    minute  minute
-    hour    hour
+    user    new_resource.username
+    minute  new_resource.minute
+    hour    new_resource.hour
     action  [:create]
   end
   new_resource.updated_by_last_action(cr.updated_by_last_action?)
