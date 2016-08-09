@@ -10,7 +10,7 @@ version          '0.1.2'
   supports os
 end
 
-%w(apt poise-python).each do |ckbk|
+%w(apt poise-python cron).each do |ckbk|
   depends ckbk
 end
 
