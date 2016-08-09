@@ -30,7 +30,7 @@ action :create do
   end
 
   curator_args = "--config #{node['elasticsearch-curator']['config_file_path']}/curator.yml #{path}/#{name}.yml"
-  cr = cron "curator-#{name}" do
+  cr = cron_d "curator" do
     command "/usr/local/bin/curator #{curator_args}"
     user    new_resource.username
     minute  new_resource.minute
