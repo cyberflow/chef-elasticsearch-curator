@@ -10,5 +10,5 @@ end
 
 group :test do
   gem 'rubocop'
-  gem 'foodcritic'
+  gem 'foodcritic', '~>7.0.1'
 end
