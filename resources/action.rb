@@ -12,6 +12,7 @@ property :username, String, default: node['elasticsearch-curator']['username']
 property :minute, String, default: node['elasticsearch-curator']['cron_minute']
 property :hour, String, default: node['elasticsearch-curator']['cron_hour']
 property :path, String, default: node['elasticsearch-curator']['action_file_path']
+property :bin_path, String, default: node['elasticsearch-curator']['bin_path']
 
 default_action :create
 
@@ -31,7 +32,7 @@ action :create do
 
   curator_args = "--config #{node['elasticsearch-curator']['config_file_path']}/curator.yml #{path}/#{name}.yml"
   cr = cron "curator-#{name}" do
-    command "/usr/local/bin/curator #{curator_args}"
+    command "#{bin_path}curator #{curator_args}"
     user    new_resource.username
     minute  new_resource.minute
     hour    new_resource.hour

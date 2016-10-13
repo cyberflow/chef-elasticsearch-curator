@@ -17,7 +17,13 @@ This cookbook can be used by including `elasticsearch-curator::default` in your 
 | node['elasticsearch-curator']['version']          | String | Version of elasticsearch-curator to install, nil = latest | nil |
 | node['elasticsearch-curator']['repository_url'] | String | URL of elasticsearch-curator package repository | 'http://packages.elastic.co/curator/4/debian' |
 | node['elasticsearch-curator']['repository_key']           | String   | elasticsearch-curator repository key | 'https://packages.elastic.co/GPG-KEY-elasticsearch' |
-|node['elasticsearch-curator']['config']|Hash|config elasticsearch-curator|{
+| node['elasticsearch-curator']['bin_path'] | String | bin path for elasticsearch-curator | '/usr/bin/' |
+|node['elasticsearch-curator']['username']|String|user for running curator|'curator'|
+|node['elasticsearch-curator']['config_file_path']|String|path to direct curator config file|"/home/#{node['elasticsearch-curator']['username']}/.curator"|
+|node['elasticsearch-curator']['action_file_path']|String|path to direct action config file|"/home/#{node['elasticsearch-curator']['username']}/.curator"|
+|node['elasticsearch-curator']['cron_minute']|String|Minute to run the curator cron job|'0'|
+|node['elasticsearch-curator']['cron_hour']|String|Hour to run the curator cron job|'*'|
+|node['elasticsearch-curator']['config']|Hash|config elasticsearch-curator| {
   'client' => {
     'hosts' => ['127.0.0.1'],
     'port' => 9200,
@@ -31,11 +37,6 @@ This cookbook can be used by including `elasticsearch-curator::default` in your 
     'logformat' => 'default'
   }
 }|
-|node['elasticsearch-curator']['username']|String|user for running curator|'curator'|
-|node['elasticsearch-curator']['config_file_path']|String|path to direct curator config file|"/home/#{node['elasticsearch-curator']['username']}/.curator"|
-|node['elasticsearch-curator']['action_file_path']|String|path to direct action config file|"/home/#{node['elasticsearch-curator']['username']}/.curator"|
-|node['elasticsearch-curator']['cron_minute']|String|Minute to run the curator cron job|'0'|
-|node['elasticsearch-curator']['cron_hour']|String|Hour to run the curator cron job|'*'|
 
 This cookbook ships with custom resources for install elasticsearch-curator and managing the configuration file:
 
