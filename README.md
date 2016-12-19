@@ -23,20 +23,7 @@ This cookbook can be used by including `elasticsearch-curator::default` in your 
 |node['elasticsearch-curator']['action_file_path']|String|path to direct action config file|"/home/#{node['elasticsearch-curator']['username']}/.curator"|
 |node['elasticsearch-curator']['cron_minute']|String|Minute to run the curator cron job|'0'|
 |node['elasticsearch-curator']['cron_hour']|String|Hour to run the curator cron job|'*'|
-|node['elasticsearch-curator']['config']|Hash|config elasticsearch-curator| {
-  'client' => {
-    'hosts' => ['127.0.0.1'],
-    'port' => 9200,
-    'use_ssl' => false,
-    'ssl_no_validate' => false,
-    'timeout' => 30,
-    'master_only' => false
-  },
-  'logging' => {
-    'loglevel' => 'INFO',
-    'logformat' => 'default'
-  }
-}|
+|node['elasticsearch-curator']['config']|Hash|config elasticsearch-curator| {<br>&nbsp;&nbsp;'client' => {<br>&nbsp;&nbsp;&nbsp;&nbsp;'hosts' => ['127.0.0.1'],<br>&nbsp;&nbsp;&nbsp;&nbsp;'port' => 9200,<br>&nbsp;&nbsp;&nbsp;&nbsp;'use_ssl' => false,<br>&nbsp;&nbsp;&nbsp;&nbsp;'ssl_no_validate' => false,<br>&nbsp;&nbsp;&nbsp;&nbsp;'timeout' => 30,<br>&nbsp;&nbsp;&nbsp;&nbsp;'master_only' => false<br>&nbsp;&nbsp;},<br>&nbsp;&nbsp;'logging' => {<br>&nbsp;&nbsp;&nbsp;&nbsp;'loglevel' => 'INFO',<br>&nbsp;&nbsp;&nbsp;&nbsp;'logformat' => 'default'<br>&nbsp;&nbsp;}<br>}|
 
 This cookbook ships with custom resources for install elasticsearch-curator and managing the configuration file:
 
