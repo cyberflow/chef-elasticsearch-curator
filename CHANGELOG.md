@@ -1,5 +1,8 @@
 # CHANGELOG
 
+## 0.1.4
+* Supports a http_auth property (contributed by @EmFl)
+
 ## 0.1.3
 * Add elasticsearch-curator bin path to resource and attributes
 

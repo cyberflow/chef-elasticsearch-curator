@@ -11,3 +11,4 @@ LineLength:
 
 StringLiterals:
   Enabled: false
+  
