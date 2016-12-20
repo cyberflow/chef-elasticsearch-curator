@@ -34,13 +34,13 @@ action :configure do
   end
 
   require 'yaml'
-  
+
   curatorconfig = config.to_hash.clone
-  
-  if !http_auth.nil? and http_auth.length > 2 and http_auth.include? ':'
-	curatorconfig['client']['http_auth']=http_auth
+
+  if !http_auth.nil? && http_auth.length > 2 && http_auth.include?(':')
+    curatorconfig['client']['http_auth'] = http_auth
   end
-      
+
   file "#{path}/curator.yml" do
     content YAML.dump(curatorconfig.to_hash)
     user user
