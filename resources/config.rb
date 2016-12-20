@@ -10,7 +10,7 @@ property :name, String, name_property: true
 property :config, Hash, default: {}
 property :username, String, default: node['elasticsearch-curator']['username']
 property :path, String, default: node['elasticsearch-curator']['config_file_path']
-
+property :http_auth, String, default: nil
 default_action :configure
 
 action :configure do
@@ -35,8 +35,14 @@ action :configure do
 
   require 'yaml'
 
+  curatorconfig = config.to_hash.clone
+
+  if !http_auth.nil? && http_auth.length > 2 && http_auth.include?(':')
+    curatorconfig['client']['http_auth'] = http_auth
+  end
+
   file "#{path}/curator.yml" do
-    content YAML.dump(config.to_hash)
+    content YAML.dump(curatorconfig.to_hash)
     user user
     mode '0644'
   end

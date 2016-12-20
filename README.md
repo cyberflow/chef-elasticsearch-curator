@@ -50,6 +50,7 @@ elasticsearch_curator_config 'default' do
   action :configure
 end
 ```
+This method also supports a http_auth property to allow passing a string with this format : "username:password". This allows retrieving the credentials from the wrapper cookbook (for example using chef-vault) and not store this sensitive information in the attributes.
 
 #### elasticsearch_curator_action
 
