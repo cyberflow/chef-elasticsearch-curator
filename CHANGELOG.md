@@ -1,5 +1,8 @@
 # CHANGELOG
 
+## 0.1.5
+* Change package name for elasticsearch-curator debian package version from 4.2
+
 ## 0.1.4
 * Supports a http_auth property (contributed by @EmFl)
 
