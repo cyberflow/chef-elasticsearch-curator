@@ -10,6 +10,8 @@ Chef cookbook to install and configure [elasticsearch-curator](https://www.elast
 
 This cookbook can be used by including `elasticsearch-curator::default` in your run list and settings attributes as needed.  Alternatively, you can use the custom resources directly.
 
+If you are using elasticsearch-curator < 4.2 you might want to use the cookbook version 0.1.4.
+
 ### Attributes
 
 | Key                                  | Type   | Description                                           | Default                                                                                                                                                             |
