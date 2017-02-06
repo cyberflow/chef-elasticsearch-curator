@@ -27,7 +27,7 @@ action :install do
   end
 
   if new_resource.install_method == 'package'
-    package 'python-elasticsearch-curator'
+    package 'elasticsearch-curator'
     package 'python-pkg-resources'
   elsif new_resource.install_method == 'pip'
     @run_context.include_recipe 'poise-python::default'
