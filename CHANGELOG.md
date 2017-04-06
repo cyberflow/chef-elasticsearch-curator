@@ -1,4 +1,6 @@
 # CHANGELOG
+## 0.2.1
+* Patched resource config.rb attributes http_auth to allow nil as a value as it is now deprecated (contributed by @GHostQC)
 
 ## 0.2.0
 * Added support for rhel platform family compatible with YUM; Tested on CentOS 7.2 (contributed by @GHostQC)
