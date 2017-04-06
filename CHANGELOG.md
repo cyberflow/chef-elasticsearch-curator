@@ -1,4 +1,7 @@
 # CHANGELOG
+## 0.2.3
+* Added ServerSpec test suites (contributed by @GHostQC)
+
 ## 0.2.1
 * Patched resource config.rb attributes http_auth to allow nil as a value as it is now deprecated (contributed by @GHostQC)
 
