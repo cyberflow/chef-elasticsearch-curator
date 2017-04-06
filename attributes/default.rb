@@ -1,6 +1,6 @@
 default['elasticsearch-curator']['version'] = nil
 default['elasticsearch-curator']['install_method'] = 'package'
-default['elasticsearch-curator']['repository_url'] = 'http://packages.elastic.co/curator/4/debian'
+default['elasticsearch-curator']['repository_url'] = '' #Default URL are defined in install.rb resource so I can select the one appropriate to the platform (you can still set your own one)
 default['elasticsearch-curator']['repository_key'] = 'https://packages.elastic.co/GPG-KEY-elasticsearch'
 default['elasticsearch-curator']['bin_path'] = '/usr/bin'
 default['elasticsearch-curator']['config'] = {

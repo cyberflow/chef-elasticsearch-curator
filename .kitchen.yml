@@ -6,14 +6,14 @@ provisioner:
   name: chef_zero
 
 platforms:
-<% %w(12.7 12.6 12.5 12.4 12.3 12.2 12.1).each do |chef_version| %>
-  - name: ubuntu-14.04-chef<%= chef_version %>
-    driver_config:
-      image_ref: Obsolete Ubuntu 14.04 Trusty (x86_64)
-      flavor_ref: SSD.30
-      require_chef_omnibus: <%= chef_version %>
-<% end %>
-
+#<% %w(12.7 12.6 12.5 12.4 12.3 12.2 12.1).each do |chef_version| %>
+#  - name: ubuntu-14.04-chef<%= chef_version %>
+#    driver_config:
+#      image_ref: Obsolete Ubuntu 14.04 Trusty (x86_64)
+#      flavor_ref: SSD.30
+#      require_chef_omnibus: <%= chef_version %>
+#<% end %>
+   - name: centos-7.2
 suites:
   - name: default
     run_list:

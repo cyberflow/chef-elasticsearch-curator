@@ -1,5 +1,8 @@
 # CHANGELOG
 
+## 0.2.0
+* Added support for rhel platform family compatible with YUM; Tested on CentOS 7.2 (contributed by @GHostQC)
+
 ## 0.1.5
 * Change package name for elasticsearch-curator debian package version from 4.2
 
