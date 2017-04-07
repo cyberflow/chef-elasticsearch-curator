@@ -48,7 +48,10 @@ action :install do
        package 'python-setuptools'
     end
   elsif new_resource.install_method == 'pip'
+    package 'python-pip'
+    node.override['poise-python']['provider'] = 'system'
     @run_context.include_recipe 'poise-python::default'
+    python_virtualenv '/opt/elasticsearch-curator'
     pi = python_package 'elasticsearch-curator' do
       version node['elasticsearch-curator']['version']
       action :install

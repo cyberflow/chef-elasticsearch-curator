@@ -1,5 +1,8 @@
 # CHANGELOG
 ## 0.2.3
+* Fixed pip-installation on both ubuntu and centos boxes, ServerSpec test now verify successfully (contributed by @GHostQC)
+
+## 0.2.2
 * Added ServerSpec test suites (contributed by @GHostQC)
 
 ## 0.2.1

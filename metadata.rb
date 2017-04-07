@@ -4,13 +4,13 @@ maintainer_email 'dmitry.r@cyberflow.net'
 license          'MIT'
 description      'Installs/Configures elasticsearch-curator'
 long_description IO.read(File.join(File.dirname(__FILE__), 'README.md'))
-version          '0.2.2'
+version          '0.2.3'
 
 %w(ubuntu debian centos redhat).each do |os|
   supports os
 end
 
-%w(apt poise-python cron).each do |ckbk|
+%w(apt poise-python cron yum-epel yum).each do |ckbk|
   depends ckbk
 end
 

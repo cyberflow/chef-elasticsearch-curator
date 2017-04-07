@@ -13,6 +13,7 @@ platforms:
 #      flavor_ref: SSD.30
 #      require_chef_omnibus: <%= chef_version %>
 #<% end %>
+   - name: ubuntu-14.04
    - name: centos-7.2
 suites:
   - name: default
@@ -23,6 +24,8 @@ suites:
   - name: pip_install
     run_list:
       - recipe[apt]
+      - recipe[yum-epel]
+      - recipe[yum]
       - recipe[elasticsearch-curator::default]
       - recipe[elasticsearch-curator-test::default]
     attributes:
