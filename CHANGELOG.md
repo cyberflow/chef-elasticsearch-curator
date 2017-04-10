@@ -1,4 +1,11 @@
 # CHANGELOG
+## 0.2.4
+* Set conditional repo_url attributes directly in default attributes files instead of inside the resource as @Cyberflow recommended (contributed by @GHostQC)
+
+* Fixed coding style according to Rubocop tests as @Cyberflow recommanded (contributed by @GHostQC)
+
+* Set max blocklength to 50 instead 30 (contributed by @GHostQC)
+
 ## 0.2.3
 * Fixed pip-installation on both ubuntu and centos boxes, ServerSpec test now verify successfully (contributed by @GHostQC)
 

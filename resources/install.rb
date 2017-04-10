@@ -16,11 +16,7 @@ default_action :install
 action :install do
   if node.platform_family? 'debian'
     apt_repository 'elasticsearch-curator' do
-      if new_resource.repository_url == ''
-	  uri 'http://packages.elastic.co/curator/4/debian'
-      else
-          uri new_resource.repository_url
-      end
+      uri new_resource.repository_url
       distribution ''
       components %w(stable main)
       key new_resource.repository_key
@@ -28,11 +24,7 @@ action :install do
     end
   elsif node.platform_family? 'rhel'
     yum_repository 'elasticsearch-curator' do
-      if new_resource.repository_url == ''
-	  baseurl 'http://packages.elastic.co/curator/4/centos/7'
-      else
-          baseurl new_resource.repository_url
-      end
+      baseurl new_resource.repository_url
       gpgkey new_resource.repository_key
       only_if { new_resource.install_method == 'package' }
     end
@@ -41,11 +33,11 @@ action :install do
   end
 
   if new_resource.install_method == 'package'
-       package 'elasticsearch-curator'
-    if node.platform_family? 'debian' 
-       package 'python-pkg-resources'
-    elsif node.platform_family? 'rhel' 
-       package 'python-setuptools'
+    package 'elasticsearch-curator'
+    if node.platform_family? 'debian'
+      package 'python-pkg-resources'
+    elsif node.platform_family? 'rhel'
+      package 'python-setuptools'
     end
   elsif new_resource.install_method == 'pip'
     package 'python-pip'
