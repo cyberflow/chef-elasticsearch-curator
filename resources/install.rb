@@ -22,15 +22,28 @@ action :install do
       key new_resource.repository_key
       only_if { new_resource.install_method == 'package' }
     end
+  elsif node.platform_family? 'rhel'
+    yum_repository 'elasticsearch-curator' do
+      baseurl new_resource.repository_url
+      gpgkey new_resource.repository_key
+      only_if { new_resource.install_method == 'package' }
+    end
   else
     Chef::Log.warn "I do not support your platform: #{node['platform_family']}"
   end
 
   if new_resource.install_method == 'package'
     package 'elasticsearch-curator'
-    package 'python-pkg-resources'
+    if node.platform_family? 'debian'
+      package 'python-pkg-resources'
+    elsif node.platform_family? 'rhel'
+      package 'python-setuptools'
+    end
   elsif new_resource.install_method == 'pip'
+    package 'python-pip'
+    node.override['poise-python']['provider'] = 'system'
     @run_context.include_recipe 'poise-python::default'
+    python_virtualenv '/opt/elasticsearch-curator'
     pi = python_package 'elasticsearch-curator' do
       version node['elasticsearch-curator']['version']
       action :install

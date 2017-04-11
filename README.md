@@ -5,6 +5,7 @@ Chef cookbook to install and configure [elasticsearch-curator](https://www.elast
 ## Tested Platforms
 
 * ubuntu 14.04
+* centos 7.2
 
 ## Usage
 

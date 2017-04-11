@@ -1,6 +1,11 @@
 default['elasticsearch-curator']['version'] = nil
 default['elasticsearch-curator']['install_method'] = 'package'
-default['elasticsearch-curator']['repository_url'] = 'http://packages.elastic.co/curator/4/debian'
+case node['platform_family']
+when 'debian'
+  default['elasticsearch-curator']['repository_url'] = 'http://packages.elastic.co/curator/4/debian'
+when 'rhel'
+  default['elasticsearch-curator']['repository_url'] = 'http://packages.elastic.co/curator/4/centos/7'
+end
 default['elasticsearch-curator']['repository_key'] = 'https://packages.elastic.co/GPG-KEY-elasticsearch'
 default['elasticsearch-curator']['bin_path'] = '/usr/bin'
 default['elasticsearch-curator']['config'] = {
