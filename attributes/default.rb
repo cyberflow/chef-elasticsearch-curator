@@ -9,7 +9,7 @@ when 'rhel'
                                                          'http://packages.elastic.co/curator/4/centos/6'
                                                        when 7
                                                          'http://packages.elastic.co/curator/4/centos/7'
-    end
+                                                       end
 end
 default['elasticsearch-curator']['repository_key'] = 'https://packages.elastic.co/GPG-KEY-elasticsearch'
 default['elasticsearch-curator']['bin_path'] = '/usr/bin'
