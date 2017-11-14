@@ -19,14 +19,12 @@ action :configure do
     action :create
     manage_home true
   end
-  new_resource.updated_by_last_action(ur.updated_by_last_action?)
 
   gr = group new_resource.username do
     members new_resource.username
     append true
     system true
   end
-  new_resource.updated_by_last_action(gr.updated_by_last_action?)
 
   directory path do
     recursive true

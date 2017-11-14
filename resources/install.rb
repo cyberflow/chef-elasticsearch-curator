@@ -14,7 +14,7 @@ property :install_version, [String, nil],  default: nil
 default_action :install
 
 action :install do
-  if node.platform_family? 'debian'
+  if platform_family?('debian')
     apt_repository 'elasticsearch-curator' do
       uri new_resource.repository_url
       distribution ''
@@ -22,7 +22,7 @@ action :install do
       key new_resource.repository_key
       only_if { new_resource.install_method == 'package' }
     end
-  elsif node.platform_family? 'rhel'
+  elsif platform_family?('rhel')
     yum_repository 'elasticsearch-curator' do
       baseurl new_resource.repository_url
       gpgkey new_resource.repository_key
@@ -34,9 +34,9 @@ action :install do
 
   if new_resource.install_method == 'package'
     package 'elasticsearch-curator'
-    if node.platform_family? 'debian'
+    if platform_family?('debian')
       package 'python-pkg-resources'
-    elsif node.platform_family? 'rhel'
+    elsif platform_family?('rhel')
       package 'python-setuptools'
     end
   elsif new_resource.install_method == 'pip'
@@ -48,7 +48,6 @@ action :install do
       version node['elasticsearch-curator']['version']
       action :install
     end
-    new_resource.updated_by_last_action(pi.updated_by_last_action?)
   else
     Chef::Application.fatal!("Unknown install method: #{@install_method}")
   end

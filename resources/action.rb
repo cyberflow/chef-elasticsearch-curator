@@ -38,5 +38,4 @@ action :create do
     hour    new_resource.hour
     action  [:create]
   end
-  new_resource.updated_by_last_action(cr.updated_by_last_action?)
 end
