@@ -5,10 +5,10 @@ when 'debian'
   default['elasticsearch-curator']['repository_url'] = 'http://packages.elastic.co/curator/4/debian'
 when 'rhel'
   default['elasticsearch-curator']['repository_url'] = case node['platform_version'].to_i
-    when 6
-        'http://packages.elastic.co/curator/4/centos/6'
-    when 7
-        'http://packages.elastic.co/curator/4/centos/7'
+                                                       when 6
+                                                         'http://packages.elastic.co/curator/4/centos/6'
+                                                       when 7
+                                                         'http://packages.elastic.co/curator/4/centos/7'
     end
 end
 default['elasticsearch-curator']['repository_key'] = 'https://packages.elastic.co/GPG-KEY-elasticsearch'
