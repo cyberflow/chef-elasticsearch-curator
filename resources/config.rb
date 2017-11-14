@@ -14,19 +14,17 @@ property :http_auth, [String, nil], default: nil
 default_action :configure
 
 action :configure do
-  ur = user new_resource.username do
+  user new_resource.username do
     system true
     action :create
     manage_home true
   end
-  new_resource.updated_by_last_action(ur.updated_by_last_action?)
 
-  gr = group new_resource.username do
+  group new_resource.username do
     members new_resource.username
     append true
     system true
   end
-  new_resource.updated_by_last_action(gr.updated_by_last_action?)
 
   directory path do
     recursive true
