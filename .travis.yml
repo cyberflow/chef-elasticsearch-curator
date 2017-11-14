@@ -1,12 +1,21 @@
+dist: trusty
+sudo: false
+
+addons:
+  apt:
+    sources:
+      - chef-stable-trusty
+    packages:
+      - chefdk=2.1.11-1
+
 language: ruby
 cache:
   directories:
   - vendor/bundle
   - vendor/cookbooks
-sudo: false
 bundler_args: --without integration --path=$PWD/vendor/bundle
 rvm:
   - 2.2
 script:
-  - bundle exec rubocop .
-  - bundle exec foodcritic --progress -f any .
+  - chef exec cookstyle
+  - chef exec foodcritic --progress -f any .
