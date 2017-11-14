@@ -6,7 +6,7 @@ c = {
       'options' => {
         'ignore_empty_list' => true,
         'continue_if_exception' => true,
-        'disable_action' => false
+        'disable_action' => false,
       },
       'filters' => [
         { 'filtertype' => 'pattern',
@@ -16,10 +16,10 @@ c = {
           'source' => 'creation_date',
           'direction' => 'older',
           'unit' => 'days',
-          'unit_count' => 7 }
-      ]
-    }
-  }
+          'unit_count' => 7 },
+      ],
+    },
+  },
 }
 
 elasticsearch_curator_action 'action' do

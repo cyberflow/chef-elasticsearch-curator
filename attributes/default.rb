@@ -15,12 +15,12 @@ default['elasticsearch-curator']['config'] = {
     'use_ssl' => false,
     'ssl_no_validate' => false,
     'timeout' => 30,
-    'master_only' => false
+    'master_only' => false,
   },
   'logging' => {
     'loglevel' => 'INFO',
-    'logformat' => 'default'
-  }
+    'logformat' => 'default',
+  },
 }
 default['elasticsearch-curator']['username'] = 'curator'
 default['elasticsearch-curator']['config_file_path'] = "/home/#{node['elasticsearch-curator']['username']}/.curator"
