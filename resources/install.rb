@@ -44,7 +44,7 @@ action :install do
     node.override['poise-python']['provider'] = 'system'
     @run_context.include_recipe 'poise-python::default'
     python_virtualenv '/opt/elasticsearch-curator'
-    pi = python_package 'elasticsearch-curator' do
+    python_package 'elasticsearch-curator' do
       version node['elasticsearch-curator']['version']
       action :install
     end
