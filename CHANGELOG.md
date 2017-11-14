@@ -1,4 +1,11 @@
 # CHANGELOG
+## 0.2.5
+* Added support for centos 6 (contributed by @mdarii)
+
+* Change syntax test to `cookstyle`
+
+* Added LICENSE file
+
 ## 0.2.4
 * Set conditional repo_url attributes directly in default attributes files instead of inside the resource as @Cyberflow recommended (contributed by @GHostQC)
 

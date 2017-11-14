@@ -73,5 +73,5 @@ end
 To run tests, install all dependencies with [bundler](http://bundler.io/):
 
     bundle install
-    bundle exec rubocop .
+    bundle exec cookstyle
     bundle exec foodcritic .

@@ -9,6 +9,6 @@ group :integration do
 end
 
 group :test do
-  gem 'foodcritic', '~>7.0.1'
-  gem 'rubocop'
+  gem 'foodcritic', '~>11.3.0'
+  gem 'cookstyle', '~>2.0.0'
 end
