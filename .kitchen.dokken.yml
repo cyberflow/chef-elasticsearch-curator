@@ -32,9 +32,13 @@ platforms:
     driver:
       image: centos:6.8
       pid_one_command: /sbin/init
+      intermediate_instructions:
+        - RUN yum install -y vixie-cron
 
   - name: centos-7
     driver:
       image: centos:7
       pid_one_command: /usr/lib/systemd/systemd
       platform: rhel
+    run_list:
+      - recipe[cron]
