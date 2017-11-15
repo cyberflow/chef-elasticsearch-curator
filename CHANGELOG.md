@@ -1,4 +1,7 @@
 # CHANGELOG
+## 0.2.6
+* fix issue #10
+
 ## 0.2.5
 * Added support for centos 6 (contributed by @mdarii)
 
