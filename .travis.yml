@@ -13,7 +13,7 @@ cache:
   directories:
   - vendor/bundle
   - vendor/cookbooks
-bundler_args: --without integration --path=$PWD/vendor/bundle
+bundler_args: --path=$PWD/vendor/bundle
 rvm:
   - 2.2
 script:
