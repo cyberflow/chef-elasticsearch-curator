@@ -19,3 +19,16 @@ rvm:
 script:
   - chef exec cookstyle
   - chef exec foodcritic --progress -f any .
+
+services: docker
+env:
+  matrix:
+    - INSTANCE=default12-ubuntu-14
+    - INSTANCE=default13-ubuntu-14
+
+script:
+  - KITCHEN_LOCAL_YAML=.kitchen.dokken.yml /opt/chefdk/embedded/bin/kitchen verify ${INSTANCE}
+  - cat .kitchen/logs/kitchen.log
+
+before_script:
+  - sudo iptables -L DOCKER || ( echo "DOCKER iptables chain missing" ; sudo iptables -N DOCKER )
