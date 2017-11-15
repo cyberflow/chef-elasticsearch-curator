@@ -25,6 +25,8 @@ env:
   matrix:
     - INSTANCE=default12-ubuntu-14
     - INSTANCE=default13-ubuntu-14
+    - INSTANCE=default13-centos-6
+    - INSTANCE=default13-centos-7
 
 script:
   - KITCHEN_LOCAL_YAML=.kitchen.dokken.yml chef exec kitchen test ${INSTANCE}

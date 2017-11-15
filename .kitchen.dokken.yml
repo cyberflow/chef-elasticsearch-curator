@@ -28,25 +28,13 @@ platforms:
         confd:
           install_recommends: false
 
-suites:
-  - name: default12
+  - name: centos-6
     driver:
-      chef_version: 12.21.3
-    run_list:
-      - recipe[elasticsearch-curator::default]
-      - recipe[elasticsearch-curator-test::default]
-    attributes:
-      kapacitor:
-        ignore_version: false
-        setup_repository: true
+      image: centos:6.8
+      pid_one_command: /sbin/init
 
-  - name: default13
+  - name: centos-7
     driver:
-      chef_version: 13.2.20
-    run_list:
-      - recipe[elasticsearch-curator::default]
-      - recipe[elasticsearch-curator-test::default]
-    attributes:
-      kapacitor:
-        ignore_version: false
-        setup_repository: true
+      image: centos:7
+      pid_one_command: /usr/lib/systemd/systemd
+      platform: rhel

@@ -27,7 +27,16 @@ platforms:
       - recipe[yum]
 
 suites:
-  - name: default
+  - name: default12
+    run_list:
+      - recipe[elasticsearch-curator::default]
+      - recipe[elasticsearch-curator-test::default]
+    driver:
+      chef_version: 12.21.3
+    attributes:
+  - name: default13
+    driver:
+      chef_version: 13.2.20
     run_list:
       - recipe[elasticsearch-curator::default]
       - recipe[elasticsearch-curator-test::default]
