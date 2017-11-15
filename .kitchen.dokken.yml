@@ -14,6 +14,8 @@ platforms:
     driver:
       image: ubuntu:14.04
       pid_one_command: /sbin/init
+    run_list:
+      - recipe[apt]
     attributes:
       apt:
         confd:
@@ -34,6 +36,8 @@ platforms:
       pid_one_command: /sbin/init
     run_list:
       - recipe[cron]
+      - recipe[yum-epel]
+      - recipe[yum]
 
   - name: centos-7
     driver:
@@ -42,3 +46,5 @@ platforms:
       platform: rhel
     run_list:
       - recipe[cron]
+      - recipe[yum-epel]
+      - recipe[yum]
