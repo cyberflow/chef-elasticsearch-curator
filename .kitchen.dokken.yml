@@ -1,0 +1,50 @@
+---
+driver:
+  name: dokken
+  privileged: true
+
+transport:
+  name: dokken
+
+provisioner:
+  name: dokken
+
+platforms:
+  - name: ubuntu-14
+    driver:
+      image: ubuntu:14.04
+      pid_one_command: /sbin/init
+    run_list:
+      - recipe[apt]
+    attributes:
+      apt:
+        confd:
+          install_recommends: false
+
+  - name: ubuntu-16
+    driver:
+      image: ubuntu:16.04
+      pid_one_command: /bin/systemd
+    attributes:
+      apt:
+        confd:
+          install_recommends: false
+
+  - name: centos-6
+    driver:
+      image: centos:6.8
+      pid_one_command: /sbin/init
+    run_list:
+      - recipe[cron]
+      - recipe[yum-epel]
+      - recipe[yum]
+
+  - name: centos-7
+    driver:
+      image: centos:7
+      pid_one_command: /usr/lib/systemd/systemd
+      platform: rhel
+    run_list:
+      - recipe[cron]
+      - recipe[yum-epel]
+      - recipe[yum]
