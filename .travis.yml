@@ -27,8 +27,7 @@ env:
     - INSTANCE=default13-ubuntu-14
 
 script:
-  - KITCHEN_LOCAL_YAML=.kitchen.dokken.yml /opt/chefdk/embedded/bin/kitchen verify ${INSTANCE}
-  - cat .kitchen/logs/kitchen.log
+  - KITCHEN_LOCAL_YAML=.kitchen.dokken.yml chef exec kitchen test ${INSTANCE}
 
 before_script:
   - sudo iptables -L DOCKER || ( echo "DOCKER iptables chain missing" ; sudo iptables -N DOCKER )
