@@ -32,8 +32,8 @@ platforms:
     driver:
       image: centos:6.8
       pid_one_command: /sbin/init
-      intermediate_instructions:
-        - RUN yum install -y vixie-cron
+    run_list:
+      - recipe[cron]
 
   - name: centos-7
     driver:

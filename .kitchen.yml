@@ -41,7 +41,18 @@ suites:
       - recipe[elasticsearch-curator::default]
       - recipe[elasticsearch-curator-test::default]
     attributes:
-  - name: pip_install
+  - name: pip_install12
+    driver:
+      chef_version: 12.21.3
+    run_list:
+      - recipe[elasticsearch-curator::default]
+      - recipe[elasticsearch-curator-test::default]
+    attributes:
+      elasticsearch-curator:
+        install_method: 'pip'
+  - name: pip_install13
+    driver:
+      chef_version: 13.2.20
     run_list:
       - recipe[elasticsearch-curator::default]
       - recipe[elasticsearch-curator-test::default]
