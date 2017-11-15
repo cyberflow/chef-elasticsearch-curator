@@ -33,7 +33,9 @@ action :install do
   end
 
   if new_resource.install_method == 'package'
-    package 'elasticsearch-curator'
+    package 'elasticsearch-curator' do
+      version node['elasticsearch-curator']['version']
+    end
     if platform_family?('debian')
       package 'python-pkg-resources'
     elsif platform_family?('rhel')
