@@ -42,6 +42,7 @@ action :configure do
   file "#{path}/curator.yml" do
     content YAML.dump(curatorconfig.to_hash)
     user user
-    mode '0644'
+    mode '0400'
+    sensitive true
   end
 end
