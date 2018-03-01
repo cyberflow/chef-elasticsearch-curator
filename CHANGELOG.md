@@ -1,4 +1,7 @@
 # CHANGELOG
+## 0.2.7
+* Sets tricter permissions on the curator config (contributed by @kovyrin)
+
 ## 0.2.6
 * fix issue #10
 

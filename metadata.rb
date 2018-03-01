@@ -4,7 +4,7 @@ maintainer_email 'dmitry.r@cyberflow.net'
 license          'MIT'
 description      'Installs/Configures elasticsearch-curator'
 long_description IO.read(File.join(File.dirname(__FILE__), 'README.md'))
-version          '0.2.5'
+version          '0.2.7'
 
 %w(ubuntu debian centos redhat).each do |os|
   supports os
