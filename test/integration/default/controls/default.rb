@@ -19,9 +19,9 @@ control 'elasticsearch_curator_default' do
 
   # Test suites splitted between package install method and pip install method
   if os[:family] == 'debian'
-  describe package('python-pkg-resources') do
-    it { should be_installed }
-  end
+    describe package('python-pkg-resources') do
+      it { should be_installed }
+    end
   # do nothing until I find how to test the APT repo
   elsif os[:family] == 'rhel'
     describe package('python-setuptools') do
