@@ -7,13 +7,6 @@ provisioner:
   require_chef_omnibus:  <%= ENV['CHEF_VERSION'] || 'current' %>
 
 platforms:
-#<% %w(12.7 12.6 12.5 12.4 12.3 12.2 12.1).each do |chef_version| %>
-#  - name: ubuntu-14.04-chef<%= chef_version %>
-#    driver_config:
-#      image_ref: Obsolete Ubuntu 14.04 Trusty (x86_64)
-#      flavor_ref: SSD.30
-#      require_chef_omnibus: <%= chef_version %>
-#<% end %>
   - name: ubuntu-14.04
     run_list:
       - recipe[apt]
@@ -26,11 +19,17 @@ platforms:
       - recipe[yum-epel]
       - recipe[yum]
 
+verifier:
+  name: inspec
+
 suites:
   - name: default12
     run_list:
       - recipe[elasticsearch-curator::default]
       - recipe[elasticsearch-curator-test::default]
+    verifier:
+      inspec_tests:
+        - path: test/integration/default
     driver:
       chef_version: 12.21.3
     attributes:
@@ -40,6 +39,9 @@ suites:
     run_list:
       - recipe[elasticsearch-curator::default]
       - recipe[elasticsearch-curator-test::default]
+    verifier:
+      inspec_tests:
+        - path: test/integration/default
     attributes:
   - name: pip_install12
     driver:
@@ -47,6 +49,9 @@ suites:
     run_list:
       - recipe[elasticsearch-curator::default]
       - recipe[elasticsearch-curator-test::default]
+    verifier:
+      inspec_tests:
+        - path: test/integration/pip_install
     attributes:
       elasticsearch-curator:
         install_method: 'pip'
@@ -56,6 +61,9 @@ suites:
     run_list:
       - recipe[elasticsearch-curator::default]
       - recipe[elasticsearch-curator-test::default]
+    verifier:
+      inspec_tests:
+        - path: test/integration/pip_install
     attributes:
       elasticsearch-curator:
         install_method: 'pip'
