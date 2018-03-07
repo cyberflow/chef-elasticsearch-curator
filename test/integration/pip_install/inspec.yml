@@ -1,0 +1,9 @@
+name: elasticsearch_curator_pip_method
+title: Default inspec profile
+maintainer: Dmitry Rebryshkin
+copyright: Dmitry Rebryshkin
+copyright_email: dr@servers.com
+license: MIT
+summary: Verify install/configure elasticsearch curator pip method
+version: 1.0.0
+supports:

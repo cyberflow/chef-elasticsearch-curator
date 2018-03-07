@@ -1,4 +1,9 @@
 # CHANGELOG
+## 0.2.8
+* Fix user permissions for curator config file (contributed by @codylewandowski)
+* Change serverspec tests to inspec
+* Add inspec verifier to kitchen.yml
+
 ## 0.2.7
 * Sets tricter permissions on the curator config (contributed by @kovyrin)
 
