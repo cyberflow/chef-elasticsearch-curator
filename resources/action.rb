@@ -16,22 +16,22 @@ property :bin_path, String, default: node['elasticsearch-curator']['bin_path']
 default_action :create
 
 action :create do
-  directory path do
+  directory new_resource.path do
     recursive true
     action :create
   end
 
   require 'yaml'
 
-  file "#{path}/#{name}.yml" do
-    content YAML.dump(config.to_hash)
+  file "#{new_resource.path}/#{new_resource.name}.yml" do
+    content YAML.dump(new_resource.config.to_hash)
     user new_resource.username
     mode '0644'
   end
 
-  curator_args = "--config #{node['elasticsearch-curator']['config_file_path']}/curator.yml #{path}/#{name}.yml"
-  cron_d "curator-#{name}" do
-    command "#{bin_path}/curator #{curator_args}"
+  curator_args = "--config #{node['elasticsearch-curator']['config_file_path']}/curator.yml #{new_resource.path}/#{new_resource.name}.yml"
+  cron_d "curator-#{new_resource.name}" do
+    command "#{new_resource.bin_path}/curator #{curator_args}"
     user    new_resource.username
     minute  new_resource.minute
     hour    new_resource.hour
