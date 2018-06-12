@@ -25,7 +25,7 @@ action :configure do
     system true
   end
 
-  directory new_resource.path do
+  directory "#{new_resource.path}" do
     recursive true
     action :create
   end
