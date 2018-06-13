@@ -13,19 +13,19 @@ property :http_auth, [String, nil], default: nil
 default_action :configure
 
 action :configure do
-  user new_resource.username do
+  user "#{new_resource.username}" do
     system true
     action :create
     manage_home true
   end
 
-  group new_resource.username do
+  group "#{new_resource.username}" do
     members new_resource.username
     append true
     system true
   end
 
-  directory new_resource.path do
+  directory "#{new_resource.path}" do
     recursive true
     action :create
   end

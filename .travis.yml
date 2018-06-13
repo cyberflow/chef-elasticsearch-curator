@@ -6,7 +6,7 @@ addons:
     sources:
       - chef-stable-trusty
     packages:
-      - chefdk=2.1.11-1
+      - chefdk=2.4.17-1
 
 language: ruby
 cache:
