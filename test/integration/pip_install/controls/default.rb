@@ -11,10 +11,9 @@ control 'elasticsearch_curator_pip' do
     describe package('python2-pip') do
       it { should be_installed }
     end
-  end
-
-  describe package('python-setuptools') do
-    it { should be_installed }
+    describe package('python-setuptools') do
+      it { should be_installed }
+    end
   end
 
   describe file('/home/curator/.curator/curator.yml') do
@@ -58,11 +57,5 @@ control 'elasticsearch_curator_pip' do
 
   describe file('/opt/elasticsearch-curator') do
     it { should be_directory }
-  end
-
-  if os[:family] == 'debian'
-    describe package('python-pkg-resources') do
-      it { should be_installed }
-    end
   end
 end

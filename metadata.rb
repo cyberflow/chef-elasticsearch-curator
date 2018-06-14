@@ -14,9 +14,6 @@ end
   depends ckbk
 end
 
-# For compatibility with 12.X versions of Chef
-depends 'compat_resource'
-
 chef_version '>= 12.9' if respond_to?(:chef_version)
 source_url 'https://github.com/cyberflow/chef-elasticsearch-curator' if respond_to?(:source_url)
 issues_url 'https://github.com/cyberflow/chef-elasticsearch-curator/issues' if respond_to?(:issues_url)
