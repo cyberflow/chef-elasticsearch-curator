@@ -13,19 +13,19 @@ property :http_auth, [String, nil], default: nil
 default_action :configure
 
 action :configure do
-  user "#{new_resource.username}" do
+  user new_resource.username do
     system true
     action :create
     manage_home true
   end
 
-  group "#{new_resource.username}" do
+  group new_resource.username do
     members new_resource.username
     append true
     system true
   end
 
-  directory "#{new_resource.path}" do
+  directory new_resource.path do
     recursive true
     action :create
   end
@@ -34,9 +34,7 @@ action :configure do
 
   curatorconfig = new_resource.config.to_hash.clone
 
-  if !new_resource.http_auth.nil? && new_resource.http_auth.length > 2 && new_resource.http_auth.include?(':')
-    curatorconfig['client']['http_auth'] = new_resource.http_auth
-  end
+  curatorconfig['client']['http_auth'] = new_resource.http_auth if new_resource.http_auth && new_resource.http_auth.length > 2 && new_resource.http_auth.include?(':')
 
   file "#{new_resource.path}/curator.yml" do
     content YAML.dump(curatorconfig.to_hash)
