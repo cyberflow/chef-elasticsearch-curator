@@ -39,6 +39,14 @@ env:
     - INSTANCE=pip-install13-ubuntu-16
     - INSTANCE=pip-install13-centos-6
     - INSTANCE=pip-install13-centos-7
+    - INSTANCE=default14-ubuntu-14
+    - INSTANCE=default14-ubuntu-16
+    - INSTANCE=default14-centos-6
+    - INSTANCE=default14-centos-7
+    - INSTANCE=pip-install14-ubuntu-14
+    - INSTANCE=pip-install14-ubuntu-16
+    - INSTANCE=pip-install14-centos-6
+    - INSTANCE=pip-install14-centos-7
 
 script:
   - chef exec cookstyle
@@ -67,6 +75,14 @@ matrix:
     - env: INSTANCE=pip-install13-ubuntu-16
     - env: INSTANCE=pip-install13-centos-6
     - env: INSTANCE=pip-install13-centos-7
+    - env: INSTANCE=default14-ubuntu-14
+    - env: INSTANCE=default14-ubuntu-16
+    - env: INSTANCE=default14-centos-6
+    - env: INSTANCE=default14-centos-7
+    - env: INSTANCE=pip-install14-ubuntu-14
+    - env: INSTANCE=pip-install14-ubuntu-16
+    - env: INSTANCE=pip-install14-centos-6
+    - env: INSTANCE=pip-install14-centos-7
   include:
     - script:
       - chef exec cookstyle
