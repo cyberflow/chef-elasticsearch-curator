@@ -7,14 +7,14 @@ provisioner:
   require_chef_omnibus:  <%= ENV['CHEF_VERSION'] || 'current' %>
 
 platforms:
-  - name: ubuntu-14.04
+  - name: ubuntu-16.04
     run_list:
       - recipe[apt]
-  - name: centos-7.2
+  - name: centos-7
     run_list:
       - recipe[yum-epel]
       - recipe[yum]
-  - name: centos-6.8
+  - name: centos-6
     run_list:
       - recipe[yum-epel]
       - recipe[yum]
@@ -31,11 +31,21 @@ suites:
       inspec_tests:
         - path: test/integration/default
     driver:
-      chef_version: 12.21.3
+      chef_version: 12.22.5
     attributes:
   - name: default13
     driver:
-      chef_version: 13.2.20
+      chef_version: 13.9.4
+    run_list:
+      - recipe[elasticsearch-curator::default]
+      - recipe[elasticsearch-curator-test::default]
+    verifier:
+      inspec_tests:
+        - path: test/integration/default
+    attributes:
+  - name: default14
+    driver:
+      chef_version: 14.2.0
     run_list:
       - recipe[elasticsearch-curator::default]
       - recipe[elasticsearch-curator-test::default]
@@ -45,7 +55,7 @@ suites:
     attributes:
   - name: pip_install12
     driver:
-      chef_version: 12.21.3
+      chef_version: 12.22.5
     run_list:
       - recipe[elasticsearch-curator::default]
       - recipe[elasticsearch-curator-test::default]
@@ -57,7 +67,19 @@ suites:
         install_method: 'pip'
   - name: pip_install13
     driver:
-      chef_version: 13.2.20
+      chef_version: 13.9.4
+    run_list:
+      - recipe[elasticsearch-curator::default]
+      - recipe[elasticsearch-curator-test::default]
+    verifier:
+      inspec_tests:
+        - path: test/integration/pip_install
+    attributes:
+      elasticsearch-curator:
+        install_method: 'pip'
+  - name: pip_install14
+    driver:
+      chef_version: 14.2.0
     run_list:
       - recipe[elasticsearch-curator::default]
       - recipe[elasticsearch-curator-test::default]

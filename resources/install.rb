@@ -6,10 +6,10 @@
 # Copyright 2016 Servers.com
 #
 
-property :arch_type, kind_of: String
-property :install_method, kind_of: String, default: 'package'
-property :repository_url, kind_of: String, default: node['elasticsearch-curator']['repository_url']
-property :repository_key, kind_of: String, default: node['elasticsearch-curator']['repository_key']
+property :arch_type, String
+property :install_method, String, default: 'package'
+property :repository_url, String, default: node['elasticsearch-curator']['repository_url']
+property :repository_key, String, default: node['elasticsearch-curator']['repository_key']
 property :install_version, [String, nil],  default: nil
 default_action :install
 
@@ -44,6 +44,7 @@ action :install do
   elsif new_resource.install_method == 'pip'
     package 'python-pip'
     node.override['poise-python']['provider'] = 'system'
+    node.override['poise-python']['provider'] = 'scl' if platform_family?('rhel')
     @run_context.include_recipe 'poise-python::default'
     python_virtualenv '/opt/elasticsearch-curator'
     python_package 'elasticsearch-curator' do
