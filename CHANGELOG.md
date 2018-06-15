@@ -1,4 +1,7 @@
 # CHANGELOG
+## 0.3.0
+* Add support curator v5 (contributed by @EmFl)
+
 ## 0.2.8
 * Fix user permissions for curator config file (contributed by @codylewandowski)
 * Change serverspec tests to inspec
