@@ -2,6 +2,7 @@ source 'https://rubygems.org'
 
 group :integration do
   gem 'berkshelf'
+  gem 'kitchen-inspec'
   gem 'kitchen-transport-rsync'
   gem 'kitchen-vagrant'
   gem 'test-kitchen'
